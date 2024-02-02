@@ -14,7 +14,7 @@ dotenv.config()
 
 // CORS
 app.use(
-  cors({ origin: true, })
+  cors({ origin: '*', })
 )
 
 // DataBase
