@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+  },
   "devDependencies": {
     "tailwindcss": "^3.4.1"
   }
