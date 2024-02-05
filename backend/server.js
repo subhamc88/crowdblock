@@ -1,9 +1,6 @@
 // Imported Modules
-import dotenv from 'dotenv'
 import express from 'express'
 import path from 'path'
-
-
 import cors from 'cors'
 import mongoose from 'mongoose'
 
@@ -11,26 +8,23 @@ import mongoose from 'mongoose'
 const port = 3001
 const db = mongoose.connection
 const app = express()
-
-// Env Config
-dotenv.config()
+const __dirname = path.dirname('../frontend/pages/')
 
 // Middleware
 app.use(
-  cors({ origin: '*', })
+  cors({
+    origin: '*',
+  })
 )
 app.use('/', express.static("../frontend/pages/"))
 
 // Root file
-const __dirname = path.dirname('../frontend/pages/')
-
 app.get('/', (req, res) => {
   res.sendFile('home/home.html', { root: path.join(__dirname, '../frontend/pages/') })
 })
 
 // DataBase
-mongoose.connect(process.env.DB_URL)
-
+mongoose.connect("mongodb+srv://jyotii25:queuemedi@mediq.p9gdaoi.mongodb.net/?retryWrites=true&w=majority")
 db.on('error', (error) => { console.error(error) })
 db.once('open', () => { console.log("Database connected") })
 
