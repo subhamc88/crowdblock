@@ -3,6 +3,7 @@ import express from 'express'
 import path from 'path'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
 // Local variables
 const port = 3001
@@ -18,13 +19,16 @@ app.use(
 )
 app.use('/', express.static("../frontend/pages/"))
 
+// Env Configuration
+dotenv.config()
+
 // Root file
 app.get('/', (req, res) => {
   res.sendFile('home/home.html', { root: path.join(__dirname, '../frontend/pages/') })
 })
 
 // DataBase
-mongoose.connect("mongodb+srv://jyotii25:queuemedi@mediq.p9gdaoi.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.DB_URL)
 db.on('error', (error) => { console.error(error) })
 db.once('open', () => { console.log("Database connected") })
 
