@@ -4,27 +4,31 @@ import path from 'path'
 import cors from 'cors'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import authRouter from './routes/Auth.js'
 
 // Local variables
 const port = 3001
 const db = mongoose.connection
 const app = express()
-const __dirname = path.dirname('../frontend/pages/')
+const __dirname = path.dirname('../')
+const opt = { root: path.join(__dirname, '../frontend/pages/home') }
 
 // Middleware
 app.use(
   cors({
     origin: '*',
+    Credential: 'true',
   })
 )
 app.use('/', express.static("../frontend/pages/"))
+app.use('/auth', authRouter)
 
 // Env Configuration
 dotenv.config()
 
-// Root file
+// Default Page
 app.get('/', (req, res) => {
-  res.sendFile('home/home.html', { root: path.join(__dirname, '../frontend/pages/') })
+  res.sendFile('home.html', opt)
 })
 
 // DataBase
