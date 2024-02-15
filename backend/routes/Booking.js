@@ -1,13 +1,14 @@
 const router = require('express').Router()
 const path = require('path')
 
-const opt = { root: path.join(__dirname, "../../frontend/pages/authentication") }
+const opt = { root: path.join(__dirname, "../../frontend/pages/booking") };
 
 router.get('/', (req, res) => {
-  res.sendFile('login.html', opt)
+  res.sendFile('booking.html', opt)
 })
 
 //router.post('/', (req, res) => {
-//  console.log(req.params.data)
+//console.log(req.params.data)
 //})
+
 module.exports = router

@@ -1,19 +1,19 @@
 // Imported Modules
-import express from 'express'
-import path from 'path'
-import cors from 'cors'
-import mongoose from 'mongoose'
-import dotenv from 'dotenv'
-import authRouter from './routes/Auth.js'
+const express = require('express')
+const path = require('path')
+const cors = require('cors')
+const mongoose = require('mongoose').connect("mongodb+srv://subhamc88:subham2004@userdata.unfcofh.mongodb.net/?retryWrites=true&w=majority")
+const db = require('mongoose').connection
+const authRouter = require('./routes/Auth.js')
+const bookingRouter = require('./routes/Booking.js')
 
 // Local variables
-const port = 3001
-const db = mongoose.connection
 const app = express()
-const __dirname = path.dirname('../')
+const port = 3001
 const opt = { root: path.join(__dirname, '../frontend/pages/home') }
 
 // Middleware
+
 app.use(
   cors({
     origin: '*',
@@ -22,9 +22,7 @@ app.use(
 )
 app.use('/', express.static("../frontend/pages/"))
 app.use('/auth', authRouter)
-
-// Env Configuration
-dotenv.config()
+app.use('/booking', bookingRouter)
 
 // Default Page
 app.get('/', (req, res) => {
@@ -32,7 +30,6 @@ app.get('/', (req, res) => {
 })
 
 // DataBase
-mongoose.connect(process.env.DB_URL)
 db.on('error', (error) => { console.error(error) })
 db.once('open', () => { console.log("Database connected") })
 
