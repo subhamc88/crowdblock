@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 const userBookingModel = mongoose.model("appointment", new mongoose.Schema({
   userName: {
     type: String,
