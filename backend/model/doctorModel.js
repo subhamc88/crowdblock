@@ -1,6 +1,6 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
-const doctorModel = mongoose.model("doctors", new mongoose.Schema(
+const doctorModel = mongoose.model("doctorsData", new mongoose.Schema(
   {
     userId: {
       type: String,
@@ -51,4 +51,3 @@ const doctorModel = mongoose.model("doctors", new mongoose.Schema(
   },
   { timestamps: true }
 ))
-module.exports = doctorModel
