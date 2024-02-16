@@ -12,8 +12,13 @@ department.addEventListener("change", () => {
 form.addEventListener("submit", (e) => {
   e.preventDefault()
   const formData = new FormData(form)
+  console.log(formData)
   const urlEncoded = new URLSearchParams(formData).toString()
   fetch('/booking', {
     method: "post",
+    body: "urlEncoded",
+    headers: {
+      'content-type': 'json'
+    }
   })
 })

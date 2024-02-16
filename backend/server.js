@@ -24,6 +24,7 @@ app.use(express.json())
 app.use('/', express.static("../frontend/pages/"))
 app.use('/auth', authRouter)
 app.use('/booking', bookingRouter)
+app.use(express.urlencoded({ extended: false }))
 
 // Default Page
 app.get('/', (req, res) => {
