@@ -10,23 +10,28 @@
 </head>
 
 <body>
-  <div class="department-selection">
-    <select id="department" value="department">
-      <option value="ortho">Bone Checkup</option>
-      <option value="derma">Dermatology</option>
-      <option value="medi">Medicine ward</option>
-      <option value="cardio">Cardiology</option>
-      <option value="ent">Ent</option>
-      <option value="neuro">Neurology</option>
-      <option value="pedia">Pediatrician</option>
-    </select>
-  </div>
-  <div class="hospital-selection" style="display:none;">
-    <select id="hospital" value="hospital">
-      <option value="mkcg">Mkcg</option>
-      <option value="city">City hospital</option>
-    </select>
-  </div>
+  <form method="POST" action="/booking/">
+    <div class="hospital-selection">
+      <select required id="hospital" value="hospital">
+        <option value="" disabled selected hidden>Choose your hospital</option>
+        <option value="mkcg">Mkcg</option>
+        <option value="city">City hospital</option>
+      </select>
+    </div>
+    <div class="department-selection">
+      <select required id="department" value="department" style="display:none">
+        <option value="" disabled selected hidden>Choose your department</option>
+        <option value="ortho">Bone Checkup</option>
+        <option value="derma">Dermatology</option>
+        <option value="medi">Medicine ward</option>
+        <option value="cardio">Cardiology</option>
+        <option value="ent">Ent</option>
+        <option value="neuro">Neurology</option>
+        <option value="pedia">Pediatrician</option>
+      </select>
+      <input type="submit" value="submit" placeholder="Book" style="display:none" id="submit">
+    </div>
+  </form>
 </body>
 
 </html>

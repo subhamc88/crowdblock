@@ -20,6 +20,7 @@ app.use(
     Credential: 'true',
   })
 )
+app.use(express.json())
 app.use('/', express.static("../frontend/pages/"))
 app.use('/auth', authRouter)
 app.use('/booking', bookingRouter)
