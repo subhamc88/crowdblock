@@ -2,15 +2,15 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
-const mongoose = require('mongoose').connect("mongodb+srv://subhamc88:subham2004@userdata.unfcofh.mongodb.net/?retryWrites=true&w=majority")
-const db = require('mongoose').connection
 const authRouter = require('./routes/Auth.js')
 const bookingRouter = require('./routes/Booking.js')
+const db = require('./database/db.js')
 
 // Local variables
 const app = express()
 const port = 3001
 const opt = { root: path.join(__dirname, '../frontend/pages/home') }
+db()
 
 // Middleware
 
@@ -30,10 +30,6 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/', (req, res) => {
   res.sendFile('home.html', opt)
 })
-
-// DataBase
-db.on('error', (error) => { console.error(error) })
-db.once('open', () => { console.log("Database connected") })
 
 // Port Connection
 app.listen(port, (req, res) => {
