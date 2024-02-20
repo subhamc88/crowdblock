@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const doctorModel = mongoose.model("doctorsData", new mongoose.Schema(
   {
-    userId: {
+    docId: {
       type: String,
     },
     firstName: {
@@ -13,6 +13,10 @@ const doctorModel = mongoose.model("doctorsData", new mongoose.Schema(
       type: String,
       required: [true, "last name is required"],
     },
+    gender: {
+      type: String,
+      required: true,
+    },
     phone: {
       type: String,
       required: [true, "phone no is required"],
@@ -20,13 +24,6 @@ const doctorModel = mongoose.model("doctorsData", new mongoose.Schema(
     email: {
       type: String,
       required: [true, "email is required"],
-    },
-    website: {
-      type: String,
-    },
-    address: {
-      type: String,
-      required: [true, "address is required"],
     },
     specialization: {
       type: String,
@@ -36,18 +33,19 @@ const doctorModel = mongoose.model("doctorsData", new mongoose.Schema(
       type: String,
       required: [true, "experience is required"],
     },
-    feesPerCunsaltation: {
-      type: Number,
-      required: [true, "fee is required"],
-    },
     status: {
       type: String,
       default: "pending",
     },
-    timings: {
-      type: Object,
+    timing: {
+      type: String,
       required: [true, "wrok timing is required"],
+    },
+    workplace: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
 ))
+module.exports = doctorModel

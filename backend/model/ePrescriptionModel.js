@@ -12,6 +12,10 @@ const ePrescriptionModel = mongoose.model("prescription", new mongoose.Schema({
     type: String,
     required: true,
   },
+  department: {
+    type: String,
+    required: true,
+  },
   docName: {
     type: String,
     required: true,
@@ -23,7 +27,6 @@ const ePrescriptionModel = mongoose.model("prescription", new mongoose.Schema({
   medicationDetails: {
     type: String,
     required: [true, "name of the medicine, doses required,doses timing are to be filled"],
-
   },
   specialInformation: {
     type: String,

@@ -1,6 +1,14 @@
 const mongoose = require('mongoose')
 const userBookingModel = mongoose.model("appointment", new mongoose.Schema({
-  userName: {
+  patientName: {
+    type: String,
+    required: true,
+  },
+  hospital: {
+    type: String,
+    required: true,
+  },
+  department: {
     type: String,
     required: true,
   },
@@ -16,6 +24,10 @@ const userBookingModel = mongoose.model("appointment", new mongoose.Schema({
     type: String,
     required: true,
   },
+  timeslot: {
+    type: String,
+    required: true,
+  },
   time: {
     type: String,
     required: true,
@@ -23,3 +35,4 @@ const userBookingModel = mongoose.model("appointment", new mongoose.Schema({
 },
   { timestamp: true }
 ))
+modules.exports = userBookingModel

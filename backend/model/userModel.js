@@ -15,8 +15,12 @@ const userModel = mongoose.model("userData", new mongoose.Schema({
   email: {
     type: String,
     required: [true, "email is required"],
-  },  
+  },
   address: {
+    type: String,
+    required: true,
+  },
+  dateofbirth: {
     type: String,
     required: true,
   },
@@ -35,6 +39,10 @@ const userModel = mongoose.model("userData", new mongoose.Schema({
   bloodGroup: {
     type: String,
     required: true,
+  },
+  pwd: {
+    type: String,
+    required: [true, "if physically handicapped"]
   },
 },
   { timestamp: true }
